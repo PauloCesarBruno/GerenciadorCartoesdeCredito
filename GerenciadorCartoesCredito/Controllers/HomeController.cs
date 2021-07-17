@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GerenciadorCartoesCredito.Models;
-//
 
 namespace GerenciadorCartoesCredito.Controllers
 {
