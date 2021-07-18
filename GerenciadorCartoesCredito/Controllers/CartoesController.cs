@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using GerenciadorCartoesCredito.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorCartoesCredito.Controllers
 {
@@ -16,6 +17,11 @@ namespace GerenciadorCartoesCredito.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> ListagemCartoes()
+        {
+            return View(await _contexto.Cartoes.ToListAsync());
         }   
 
         [HttpGet]
@@ -32,7 +38,7 @@ namespace GerenciadorCartoesCredito.Controllers
             {
                 await _contexto.AddAsync(cartao);
                 await _contexto.SaveChangesAsync();
-                return RedirectToAction(nameof(NovoCartao));
+                return RedirectToAction(nameof(ListagemCartoes));
             }
             return View(cartao);
         }

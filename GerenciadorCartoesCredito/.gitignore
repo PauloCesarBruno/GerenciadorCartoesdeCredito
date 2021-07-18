@@ -180,6 +180,9 @@ csx/
 ecf/
 rcf/
 
+# Arquivos .txt
+*.txt
+
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/

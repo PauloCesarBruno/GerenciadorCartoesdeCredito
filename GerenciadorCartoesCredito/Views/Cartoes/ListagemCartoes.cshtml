@@ -1,0 +1,52 @@
+@model IEnumerable<GerenciadorCartoesCredito.Models.Cartao>
+
+@{
+    ViewData["Titlle"] = "Cartões Cadastrados";
+}
+
+<h3>Listagem de Carões</h3>
+<hr />
+
+<p>
+    <a asp-action="NovoCartao" class="btn btn-success btn-sm">Novo Cartão</a>
+</p>
+<br />
+
+<table class="table table-hover table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.NomeBanco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.NumeroCartao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Limite)
+            </th>
+             <th></th>
+        </tr> 
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modeItem => item.NomeBanco)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modeItem => item.NumeroCartao)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modeItem => item.Limite)
+                </td>
+                <td>
+                    <a asp-action="AtualizarCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-primary">Atualizar</a>
+                    <a asp-action="GastosCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-secondary">Gastos</a>
+                    <a asp-action="ExcluirCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
