@@ -42,5 +42,34 @@ namespace GerenciadorCartoesCredito.Controllers
             }
             return View(cartao);
         }
+
+        [HttpGet]
+        public async Task<IActionResult>AtualizarCartao(int CartaoId)
+        {
+            Cartao cartao = await _contexto.Cartoes.FindAsync(CartaoId);
+            if(cartao == null)
+            {
+                return NotFound();
+            }
+            return View(cartao);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AtualizarCartao(int cartaoId, Cartao cartao)
+        {
+            if(cartaoId != cartao.CartaoId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _contexto.Update(cartao);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(ListagemCartoes));
+            }
+            return View(cartao);
+        }
     }
 }
