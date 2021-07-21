@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GerenciadorCartoesCredito.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace GerenciadorCartoesCredito.Controllers
 {
@@ -8,6 +9,40 @@ namespace GerenciadorCartoesCredito.Controllers
     {
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login(int? Id)
+        {
+            if (Id != null)
+            {
+                if (Id == 0)
+                {
+                    HttpContext.Session.SetString("IdLogado", string.Empty);
+                    HttpContext.Session.SetString("NomeLogado", string.Empty);
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(ModelLogin login)
+        {
+            if (ModelState.IsValid)
+            {
+                bool loginOk = login.ValidarLogin();
+                if (loginOk)
+                {
+                    HttpContext.Session.SetString("IdUsuario", login.Id);
+                    HttpContext.Session.SetString("NomeUsuario", login.Nome);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Email e/ou Senha Incorreto(s) !";
+                }
+            }
             return View();
         }
 

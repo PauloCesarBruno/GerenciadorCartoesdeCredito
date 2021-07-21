@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GerenciadorCartoesCredito.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +27,11 @@ namespace GerenciadorCartoesCredito
         public void ConfigureServices(IServiceCollection services)
         {            
             services.AddControllersWithViews();
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<Contexto>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
             services.AddCors();
+            services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +49,7 @@ namespace GerenciadorCartoesCredito
             }
            //app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseCors(x=> x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
         
             app.UseRouting();
@@ -55,7 +60,7 @@ namespace GerenciadorCartoesCredito
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Cartoes}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }
