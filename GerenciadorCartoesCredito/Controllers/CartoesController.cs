@@ -14,11 +14,6 @@ namespace GerenciadorCartoesCredito.Controllers
             _contexto = contexto;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> ListagemCartoes()
         {
             return View(await _contexto.Cartoes.ToListAsync());

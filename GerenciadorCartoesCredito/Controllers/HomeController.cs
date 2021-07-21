@@ -19,8 +19,8 @@ namespace GerenciadorCartoesCredito.Controllers
             {
                 if (Id == 0)
                 {
-                    HttpContext.Session.SetString("IdLogado", string.Empty);
-                    HttpContext.Session.SetString("NomeLogado", string.Empty);
+                    HttpContext.Session.SetString("IdUsuario", string.Empty);
+                    HttpContext.Session.SetString("NomeUsuario", string.Empty);
                 }
             }
             return View();
