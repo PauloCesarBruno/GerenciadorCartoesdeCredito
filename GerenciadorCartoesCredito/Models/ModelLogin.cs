@@ -10,8 +10,6 @@ namespace GerenciadorCartoesCredito.Models
         public string Id { get; set; }
 
         [Display(Name = " Nome")]
-        [MaxLength(50, ErrorMessage = "Maximo 50 (cinquenta) caracteres !")]
-        [MinLength(3, ErrorMessage = "Mínimo 03 (três) caracteres !")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório !")]
