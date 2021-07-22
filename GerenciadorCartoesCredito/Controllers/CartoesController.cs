@@ -66,5 +66,14 @@ namespace GerenciadorCartoesCredito.Controllers
             }
             return View(cartao);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ExcluirCartao (int cartaoId)
+        {            
+            Cartao cartao = await _contexto.Cartoes.FindAsync(cartaoId);
+            _contexto.Cartoes.Remove(cartao);
+            await _contexto.SaveChangesAsync();
+            return RedirectToAction(nameof(ListagemCartoes));
+        }
     }
 }

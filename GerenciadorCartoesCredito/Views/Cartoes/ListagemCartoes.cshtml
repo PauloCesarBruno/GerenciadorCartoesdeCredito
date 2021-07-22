@@ -44,9 +44,21 @@
                 <td>
                     <a asp-action="AtualizarCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-primary">Atualizar</a>
                     <a asp-action="GastosCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-secondary">Gastos</a>
-                    <a asp-action="ExcluirCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-danger">Excluir</a>
+                    
+                    <form style="margin-left: 140px; margin-top: -31px;" asp-action="ExcluirCartao" asp-route-cartaoId="@item.CartaoId" onclick="confirm('O Cartão @item.NumeroCartao será excluido !!!')">
+                    <button type="submit" class="btn btn-sm btn-danger">Excluir</button></form>
                 </td>
             </tr>
         }
-    </tbody>
+    </tbody>    
 </table>
+
+<br /><br />
+
+ <button type="button" class="btn btn-dark btn-sm" onclick="Voltar()">Voltar para o inicio</button>
+
+ <script>
+     function Voltar(){
+         window.location.href = '../Home/Index'
+     }
+ </script>
