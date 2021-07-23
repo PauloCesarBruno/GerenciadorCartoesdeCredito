@@ -8,7 +8,6 @@ namespace GerenciadorCartoesCredito.Models
 
         public string NumeroCartao { get; set; }
 
-
         public List<Gasto> ListaGastos { get; set; }
 
         public int PorcentagemGasta { get; set; }

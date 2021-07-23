@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace GerenciadorCartoesCredito.Models
 {
     public class Gasto
@@ -6,10 +8,14 @@ namespace GerenciadorCartoesCredito.Models
 
         public int CartaoId { get; set; }
 
+        [Required(ErrorMessage ="Campo Obrigatório !")]
+        [Display(Name ="Descrição")]
         public string Descricao { get; set; }
 
-        public Cartao Cartao { get; set; }       
+        public Cartao Cartao { get; set; }  
 
+        [Required(ErrorMessage ="Campo Obrigatório !")]
+        [DataType(DataType.Currency)]
         public double Valor { get; set; }
     }
 }

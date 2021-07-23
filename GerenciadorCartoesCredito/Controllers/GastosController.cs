@@ -31,5 +31,28 @@ namespace GerenciadorCartoesCredito.Controllers
             };
             return View(gastosViewModel);
         }
+
+        [HttpGet]
+        public IActionResult NovoGasto(int cartaoId)
+        {
+            Gasto gasto = new Gasto
+            {
+                CartaoId = cartaoId
+            };
+            return View(gasto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> NovoGasto(Gasto gasto)
+        {
+            if (ModelState.IsValid)
+            {
+                await _contexto.AddAsync(gasto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(ListagemGastos), new { cartaoId = gasto.CartaoId });
+            }
+            return View(gasto);
+        }
     }
 }
