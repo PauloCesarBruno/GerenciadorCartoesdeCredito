@@ -43,7 +43,7 @@
                 </td>
                 <td>
                     <a asp-action="AtualizarCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-primary">Atualizar</a>
-                    <a asp-action="GastosCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-secondary">Gastos</a>
+                    <a asp-controller="Gastos" asp-action="ListagemGastos" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-secondary">Gastos</a>
                     
                     <form style="margin-left: 140px; margin-top: -31px;" asp-action="ExcluirCartao" asp-route-cartaoId="@item.CartaoId" onclick="confirm('O Cartão @item.NumeroCartao será excluido !!!')">
                     <button type="submit" class="btn btn-sm btn-danger">Excluir</button></form>

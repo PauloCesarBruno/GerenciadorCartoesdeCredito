@@ -51,6 +51,9 @@ namespace GerenciadorCartoesCredito.Migrations
                     b.Property<int>("CartaoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Valor")
                         .HasColumnType("float");
 

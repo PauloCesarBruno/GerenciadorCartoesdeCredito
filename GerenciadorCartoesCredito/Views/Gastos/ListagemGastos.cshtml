@@ -1,0 +1,44 @@
+@model GerenciadorCartoesCredito.Models.GastosViewModel
+
+@{
+    ViewData["Title"] = "Gastos do Cartão " + Model.NumeroCartao;
+}
+
+<div class="alert alert-secondary">
+    Cartão número @Model.NumeroCartao
+</div>
+
+<p>
+    <a asp-action="NovoGasto" asp-route-cartaoId="@Model.CartaoId" class="btn btn-success btn-sm">Novo Gasto</a>
+</p>
+
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Valor do Gasto
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListaGastos) {
+            <tr>
+               <td>
+                    @item.Descricao
+                </td>
+                <td>
+                    @item.Valor
+                </td>
+                
+                <td>
+                    <a asp-action="AtualizarGasto" asp-route-gastoId="@item.GastoId" class="btn btn-sm btn-primary">Atualizar</a> |
+                    <a asp-action="ExcluirGasto" asp-route-gastoId="@item.GastoId" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

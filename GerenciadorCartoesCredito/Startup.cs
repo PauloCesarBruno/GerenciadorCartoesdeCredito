@@ -31,7 +31,7 @@ namespace GerenciadorCartoesCredito
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<Contexto>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
             services.AddCors();
-            services.AddMvcCore();
+            //services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

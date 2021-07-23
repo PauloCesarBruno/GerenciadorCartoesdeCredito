@@ -6,7 +6,9 @@ namespace GerenciadorCartoesCredito.Models
 
         public int CartaoId { get; set; }
 
-        public Cartao Cartao { get; set; }
+        public string Descricao { get; set; }
+
+        public Cartao Cartao { get; set; }       
 
         public double Valor { get; set; }
     }

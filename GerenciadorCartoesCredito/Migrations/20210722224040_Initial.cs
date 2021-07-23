@@ -2,7 +2,7 @@
 
 namespace GerenciadorCartoesCredito.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,7 @@ namespace GerenciadorCartoesCredito.Migrations
                     GastoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CartaoId = table.Column<int>(type: "int", nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Valor = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
