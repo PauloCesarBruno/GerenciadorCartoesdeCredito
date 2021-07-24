@@ -9,6 +9,9 @@ namespace GerenciadorCartoesCredito.Models
     public DbSet <Gasto> Gastos { get; set; }
 
     public Contexto(DbContextOptions<Contexto> options) : base (options){ }
-    
+
+        public Contexto()
+        {
+        }
     }
 }

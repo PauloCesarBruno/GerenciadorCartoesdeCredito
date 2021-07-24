@@ -7,6 +7,18 @@
 <h3>Listagem de Carões</h3>
 <hr />
 
+@{
+                    @try
+                    {
+                        var erro = TempData["ErrorMessage"].ToString();
+                        <h5 class="text-danger">@erro</h5>
+                    }
+                    catch
+                    {
+                        //
+                    }
+                }
+
 <p>
     <a asp-action="NovoCartao" class="btn btn-success btn-sm">Novo Cartão</a>
 </p>
@@ -15,6 +27,9 @@
 <table class="table table-hover table-sm">
     <thead class="thead-dark">
         <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.CartaoId)
+            </th>
             <th>
                 @Html.DisplayNameFor(Model => Model.NomeBanco)
             </th>
@@ -33,6 +48,9 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modeItem => item.CartaoId)
+                </td>
+                <td>
                     @Html.DisplayFor(modeItem => item.NomeBanco)
                 </td>
                  <td>
@@ -45,7 +63,7 @@
                     <a asp-action="AtualizarCartao" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-primary">Atualizar</a>
                     <a asp-controller="Gastos" asp-action="ListagemGastos" asp-route-cartaoId="@item.CartaoId" class="btn btn-sm btn-secondary">Gastos</a>
                     
-                    <form style="margin-left: 140px; margin-top: -31px;" asp-action="ExcluirCartao" asp-route-cartaoId="@item.CartaoId" onclick="confirm('O Cartão @item.NumeroCartao será excluido !!!')">
+                    <form style="margin-left: 140px; margin-top: -31px;" asp-action="ExcluirCartao" asp-route-cartaoId="@item.CartaoId" onclick="return confirm('O Cartão @item.NumeroCartao Será excluido clique em (Ok) ou (Cancelar)...!')">
                     <button type="submit" class="btn btn-sm btn-danger">Excluir</button></form>
                 </td>
             </tr>

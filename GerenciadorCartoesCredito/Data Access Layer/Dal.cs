@@ -6,11 +6,11 @@ namespace GerenciadorCartoesCredito.Data_Access_Layer
 {
     public class Dal
     {
-        public static readonly string Server = "(localdb)\\MSSQLLocalDB";
+        public static readonly string Server = "DESKTOP-EJP79KA";
         public static readonly string Database = "ControleCartoes";
-        public static readonly string User = "";
+        public static readonly string User = "sa";
 
-        public static readonly string Password = "";
+        public static readonly string Password = "Paradoxo22";
 
         public static readonly string StrSql = $"Server = {Server}; Database = {Database}; Uid ={User}; Pwd ={Password}";
 

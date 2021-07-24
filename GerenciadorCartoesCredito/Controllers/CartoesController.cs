@@ -71,9 +71,19 @@ namespace GerenciadorCartoesCredito.Controllers
         public async Task<IActionResult> ExcluirCartao (int cartaoId)
         {            
             Cartao cartao = await _contexto.Cartoes.FindAsync(cartaoId);
-            _contexto.Cartoes.Remove(cartao);
-            await _contexto.SaveChangesAsync();
-            return RedirectToAction(nameof(ListagemCartoes));
+
+            Gasto gasto = new Gasto();
+            if (gasto.GastoId <= 1) // Verificar A CONDICAO
+            {
+                TempData["ErrorMessage"] = "Você não pode Excluir Este Cartão pois o mesmo possui Gastos em Aberto !!! ";     
+                return RedirectToAction("ListagemCartoes", "Cartoes");
+            }
+            else
+            {
+                _contexto.Cartoes.Remove(cartao);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(ListagemCartoes));
+            }
         }
     }
 }

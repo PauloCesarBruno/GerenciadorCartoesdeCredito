@@ -52,6 +52,7 @@ namespace GerenciadorCartoesCredito.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Valor")
