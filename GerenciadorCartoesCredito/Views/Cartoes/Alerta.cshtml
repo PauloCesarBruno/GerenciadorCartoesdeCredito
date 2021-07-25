@@ -1,0 +1,25 @@
+@model GerenciadorCartoesCredito.Models.Cartao
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+      <br/>
+    <h1 style="color: red; font-size: 40px; font-family: 'Monotype Corsiva'";>Atenção !!!</h1>
+    <hr /><br />
+    
+    <h4 style="font-family: 'Monotype Corsiva'";>Você não pode Excluir este Carão, pois o mesmo possui gastos em aberto.</h4>
+    <h4 style="font-family: 'Monotype Corsiva'";>Primeiramente Zere o(os) gasto(s) excluindo-o(s) e depois volte e Exclua o Cartão !</h4>    
+    <br/>
+      </div>
+    </div>
+</div>
+
+<hr /><br /><br /><br /><br />
+
+<button type="button" class="btn btn-block btn-outline-info" onclick="Voltar()">Voltar</button>
+
+<script>
+    function Voltar() {
+        window.location.href = '../Cartoes/ListagemCartoes';
+    }
+</script>
