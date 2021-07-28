@@ -2,7 +2,7 @@
 
 namespace GerenciadorCartoesCredito.Migrations
 {
-    public partial class NewConn : Migration
+    public partial class Migra1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

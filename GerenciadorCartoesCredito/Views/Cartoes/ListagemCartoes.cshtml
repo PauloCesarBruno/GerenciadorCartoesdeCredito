@@ -7,8 +7,7 @@
 <h3>Listagem de Carões</h3>
 <hr />
 
-
-<table class="table table-hover table-sm">
+<table id="tblLCartoes" class="table table-hover table-sm"> 
     <thead class="thead-dark">
         <tr>
             <th>
@@ -64,3 +63,18 @@
          window.location.href = '../Home/Index'
      }
  </script>
+
+
+ @section Scripts {
+     <script>
+
+    $(document).ready(function() {
+        $('#tblLCartoes').DataTable( {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
+            }
+        } );
+    } );
+
+     </script>
+ }

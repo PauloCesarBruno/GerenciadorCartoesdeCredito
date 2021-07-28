@@ -1,0 +1,36 @@
+@model GerenciadorCartoesCredito.Models.Gasto
+
+@{
+    ViewData["Title"] = "Atualizar gasto de " + Model.Descricao;
+}
+
+<h6 class="alert alert-primary">Atualizar gasto de @Model.Descricao</h6>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AtualizarGasto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GastoId" />
+            
+            <input asp-for="CartaoId" type="hidden"/>
+            
+
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label col-form-label-sm"></label>
+                <input asp-for="Descricao" class="form-control form-control-sm" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label col-form-label-sm"></label>
+                <input asp-for="Valor" class="form-control form-control-sm" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>            
+
+            <div class="form-group">
+                <input type="submit" value="Atualizar" class="btn btn-primary btn-sm" /> &emsp;
+                <a asp-action="ListagemGastos" asp-route-cartaoid="@Model.CartaoId">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>

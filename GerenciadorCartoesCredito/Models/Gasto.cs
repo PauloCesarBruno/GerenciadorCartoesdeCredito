@@ -8,11 +8,11 @@ namespace GerenciadorCartoesCredito.Models
 
         public int CartaoId { get; set; }
 
+        public Cartao Cartao { get; set; }  
+
         [Required(ErrorMessage ="Campo Obrigatório !")]
         [Display(Name ="Descrição")]
         public string Descricao { get; set; }
-
-        public Cartao Cartao { get; set; }  
 
         [Required(ErrorMessage ="Campo Obrigatório !")]
         [DataType(DataType.Currency)]

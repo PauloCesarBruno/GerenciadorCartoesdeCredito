@@ -54,5 +54,46 @@ namespace GerenciadorCartoesCredito.Controllers
             }
             return View(gasto);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AtualizarGasto (int gastoId)
+        {
+            Gasto gasto = await _contexto.Gastos.FindAsync(gastoId);
+
+            if (gasto == null)        
+                return NotFound();
+
+            return View(gasto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AtualizarGasto(int gastoId, Gasto gasto)
+        {
+            if(gastoId != gasto.GastoId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _contexto.Update(gasto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(ListagemGastos), new { cartaoId = gasto.CartaoId });
+            }
+            return View(gasto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ExcluirGasto (int gastoId)
+        {   
+                Gasto gasto = await _contexto.Gastos.FindAsync(gastoId);
+            
+                _contexto.Remove(gasto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(ListagemGastos), new { cartaoId = gasto.CartaoId });
+           
+        }
     }
 }

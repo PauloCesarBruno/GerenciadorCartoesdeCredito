@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorCartoesCredito.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210724155034_NewConn")]
-    partial class NewConn
+    [Migration("20210728191218_Migra1")]
+    partial class Migra1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

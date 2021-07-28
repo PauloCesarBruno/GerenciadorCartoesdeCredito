@@ -2,17 +2,19 @@
 
 @{
     ViewData["Title"] = "Gastos do Cartão " + Model.NumeroCartao;
+    string classes = "c100 big orange p" + Model.PorcentagemGasta;
 }
 
 <div class="alert alert-secondary">
     Cartão número @Model.NumeroCartao
 </div>
 
+
 <p>
-    <a asp-action="NovoGasto" asp-route-cartaoId="@Model.CartaoId" class="btn btn-success btn-sm">Novo Gasto</a>
+    <a asp-action="NovoGasto" asp-route-cartaoId="@Model.CartaoId" class="btn btn-info btn-sm">Novo Gasto</a>
 </p>
 
-<table class="table table-hover table-sm">
+<table id="tblLGastos" class="table table-hover table-sm">
     <thead class="thead-dark">
         <tr>
             <th>
@@ -48,9 +50,49 @@
                 
                 <td>
                     <a asp-action="AtualizarGasto" asp-route-gastoId="@item.GastoId" class="btn btn-sm btn-primary">Atualizar</a> |
-                    <a asp-action="ExcluirGasto" asp-route-gastoId="@item.GastoId" class="btn btn-sm btn-danger">Excluir</a>
+                    <form style="margin-left: 85px; margin-top: -31px;" asp-action="ExcluirGasto" asp-route-gastoId="@item.GastoId" onclick="return confirm('Prosseguir com a exclusão do gasto @item.Descricao ?')">
+                    <button type="submit" class="btn btn-sm btn-danger">Excluir</button></form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="@classes">
+                <span>@Model.PorcentagemGasta%</span>
+                <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br /><br />
+
+<div class="container">
+    <button type="button" class="btn btn-success btn-sm" onclick="Voltar()">Voltar para Listagem Carões</button>
+</div>
+
+ <script>
+     function Voltar(){
+         window.location.href = '../Cartoes/ListagemCartoes';
+     }
+ </script>
+
+
+ @section Scripts {
+     <script>
+
+    $(document).ready(function() {
+        $('#tblLGastos').DataTable( {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
+            }
+        } );
+    } );
+
+     </script>
+ }
