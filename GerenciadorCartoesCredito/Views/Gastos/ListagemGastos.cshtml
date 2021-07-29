@@ -9,6 +9,20 @@
     Cartão número @Model.NumeroCartao
 </div>
 
+ @{
+    @try
+        {
+            var erro = TempData["ErrorMessage"].ToString();
+            <h3 class="text-danger">@erro</h3>  
+
+        }
+         catch
+        {
+            //
+        }
+}
+
+<br />
 
 <p>
     <a asp-action="NovoGasto" asp-route-cartaoId="@Model.CartaoId" class="btn btn-info btn-sm">Novo Gasto</a>

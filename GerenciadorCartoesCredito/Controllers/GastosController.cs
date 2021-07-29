@@ -29,6 +29,10 @@ namespace GerenciadorCartoesCredito.Controllers
                 ListaGastos = await _contexto.Gastos.Where(c=> c.CartaoId == cartaoId).ToListAsync(),
                 PorcentagemGasta = Convert.ToInt32((soma / cartao.Limite) * 100) // Aqui acho a porcentagem
             };
+            if (gastosViewModel.PorcentagemGasta > (100/100 * 100 ) +1)
+            {
+                TempData["ErrorMessage"] = "Atenção: Este Cartao Já estourou o Limite !!!";
+            }
             return View(gastosViewModel);
         }
 
