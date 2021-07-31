@@ -31,7 +31,7 @@ namespace GerenciadorCartoesCredito
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<Contexto>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
             services.AddCors();
-            //services.AddMvcCore();
+            services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +47,8 @@ namespace GerenciadorCartoesCredito
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-           //app.UseHttpsRedirection();
+
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
             app.UseCors(x=> x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
