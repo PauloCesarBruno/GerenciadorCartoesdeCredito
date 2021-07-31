@@ -28,7 +28,7 @@ namespace GerenciadorCartoesCredito
         {            
             services.AddControllersWithViews();
             services.AddSession();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<Contexto>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
             services.AddCors();
             //services.AddMvcCore();
