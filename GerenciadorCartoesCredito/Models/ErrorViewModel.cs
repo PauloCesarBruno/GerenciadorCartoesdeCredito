@@ -1,5 +1,3 @@
-using System;
-
 namespace GerenciadorCartoesCredito.Models
 {
     public class ErrorViewModel

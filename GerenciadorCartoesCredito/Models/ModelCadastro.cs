@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using GerenciadorCartoesCredito.Data_Access_Layer;

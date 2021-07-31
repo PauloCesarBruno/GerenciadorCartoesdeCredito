@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using GerenciadorCartoesCredito.Models;
 using Microsoft.AspNetCore.Mvc;
