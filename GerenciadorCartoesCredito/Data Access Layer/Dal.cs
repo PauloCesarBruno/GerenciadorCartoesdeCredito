@@ -6,7 +6,7 @@ namespace GerenciadorCartoesCredito.Data_Access_Layer
 {
     public class Dal
     {
-        public static readonly string Server = "DESKTOP-EJP79KA";
+        public static readonly string Server = "HOME";
         public static readonly string Database = "ControleCartoes";
         public static readonly string User = "sa";
 
